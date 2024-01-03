@@ -25,10 +25,10 @@ Before you start, make sure you have the following:
 
 The application uses the following environment variables:
 
-- `MONGO_URL_local`: Description of what this variable is used for. (e.g., API key)
-- `PORT`: Description of what this variable is used for. (e.g., Database URL)
-- `JWT_SECRET`: Description of what this variable is used for. (e.g., Secret key)
-- `NODE_ENV`: Description of what this variable is used for. (e.g., Secret key)
+- `PORT`: The port on which the server will run. (e.g., 5000)
+- `MONGO_URL_local`: The MongoDB connection URL for the local database. (e.g., mongodb://0.0.0.0:27017/students_Management)
+- `JWT_SECRET`: Secret key used for JWT (JSON Web Token) generation and validation. (e.g., navin)
+- `NODE_ENV`: Environment mode indicator (e.g., 'development', 'production'). Determines the application's behavior.
 
 ### Installation
 
@@ -47,9 +47,10 @@ The application uses the following environment variables:
    - Create a `.env` file in the root directory
    - Add your environment variables with their corresponding values
      ```env
-     ENV_VARIABLE_1=your_value_1
-     ENV_VARIABLE_2=your_value_2
-     ENV_VARIABLE_3=your_value_3
+     PORT=your_value_1
+     MONGO_URL_local=your_value_2
+     JWT_SECRET=your_value_3
+     NODE_ENV=your_value_4
      ```
 
 4. Start the application
