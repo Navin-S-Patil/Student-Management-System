@@ -2,15 +2,15 @@
 
 ## Overview
 
-Welcome to the documentation for the **Project Name** API. This guide provides essential information to get started with the API.
+Welcome to the documentation for the **Student Management System** API. This guide provides essential information to get started with the API.
 
 ## API URL
 
-The base URL for the API is: `https://your-api-url.com`
+The base URL for the API is: `http://localhost:5000/api/`
 
 ## API Documentation
 
-Explore the API using Postman. The detailed documentation is available at: [API Documentation](https://postman.com/path-to-your-docs)
+Explore the API using Postman. The detailed documentation is available at: [API Documentation](https://documenter.getpostman.com/view/28773422/2s9YsFEEeU)
 
 ## Getting Started
 
@@ -25,19 +25,21 @@ Before you start, make sure you have the following:
 
 The application uses the following environment variables:
 
-- `ENV_VARIABLE_1`: Description of what this variable is used for. (e.g., API key)
-- `ENV_VARIABLE_2`: Description of what this variable is used for. (e.g., Database URL)
-- `ENV_VARIABLE_3`: Description of what this variable is used for. (e.g., Secret key)
+- `MONGO_URL_local`: Description of what this variable is used for. (e.g., API key)
+- `PORT`: Description of what this variable is used for. (e.g., Database URL)
+- `JWT_SECRET`: Description of what this variable is used for. (e.g., Secret key)
+- `NODE_ENV`: Description of what this variable is used for. (e.g., Secret key)
 
 ### Installation
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/your-username/project-name.git
+   git clone https://github.com/Navin-S-Patil/Student-Management-System.git
    ```
 
 2. Install dependencies
    ```bash
+   cd Student-Management-System
    npm install
    ```
 
@@ -58,11 +60,11 @@ The application uses the following environment variables:
 ## Usage
 
 1. Replace placeholders in the `.env` file with your actual values.
-2. Explore the API using the provided [documentation](https://postman.com/path-to-your-docs).
+2. Explore the API using the provided [documentation](https://documenter.getpostman.com/view/28773422/2s9YsFEEeU).
 
 ## Issues
 
-If you encounter any issues or have questions, feel free to [open an issue](https://github.com/your-username/project-name/issues).
+If you encounter any issues or have questions, feel free to [open an issue](https://github.com/Navin-S-Patil/Student-Management-System.git/issues).
 
 ## Contributions
 
