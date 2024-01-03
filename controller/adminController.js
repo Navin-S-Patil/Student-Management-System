@@ -52,7 +52,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
   if (newAdmin) {
     // generateToken(res, newAdmin._id);
     res.status(201).json({
-      _id: newAdmin._id,
+      // _id: newAdmin._id,
       name: newAdmin.name,
       email: newAdmin.email,
       department: newAdmin.department,

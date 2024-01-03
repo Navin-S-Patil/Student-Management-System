@@ -12,7 +12,9 @@ router.post("/auth", authUser);
 //use can only be registerd by admin
 //middleware to check if user is admin
 router.post("/register", protectAdmin,registerUser);
+
 router.post("/loggout", loggoutUser);
+
 router.get("/seeTask", protectUser,seeTask);
 router.put("/updateTaskStatus", protectUser,updateTaskStatus);
 

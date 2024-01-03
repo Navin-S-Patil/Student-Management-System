@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 const Task = require("../models/Task");
 const generateToken = require("../utils/tokenGenerator");
+const { getDecodedUser } = require("../utils/decoder");
 
 //@desc    Auth user/set token
 //route    POST /api/student/auth
@@ -84,13 +85,21 @@ const loggoutUser = asyncHandler(async (req, res) => {
 //route    get /api/student/seeTask
 //@access  Private
 const seeTask = asyncHandler(async (req, res) => {
-  const task = await Task.findOne(req.user._id);
+  const token = req.headers.authorization.split(" ")[1];
 
-  if (task) {
-    res.status(200).json(task.taskList);
-  } else {
-    res.status(401);
-    throw new Error("Task not found");
+  try {
+    const decodedUser = getDecodedUser(token);
+
+    const task = await Task.findOne({ user: decodedUser.userId });
+
+    if (task) {
+      res.status(200).json(task.taskList);
+    } else {
+      res.status(401);
+      throw new Error("Task not found");
+    }
+  } catch (error) {
+    res.status(401).json({ message: error.message });
   }
 });
 
@@ -98,24 +107,32 @@ const seeTask = asyncHandler(async (req, res) => {
 //route    PUT /api/student/updateTaskStatus
 //@access  Private
 const updateTaskStatus = asyncHandler(async (req, res) => {
-  const task = await Task.findOne(req.user._id);
+  const token = req.headers.authorization.split(" ")[1];
 
-  if (task) {
-    const { title, status } = req.body;
+  try {
+    const decodedUser  = getDecodedUser(token);
 
-    const index = task.taskList.findIndex((task) => task.title === title);
+    const task = await Task.findOne({ user: decodedUser.userId });
 
-    if (index !== -1) {
-      task.taskList[index].status = status;
-      await task.save();
-      res.status(200).json(task.taskList[index]);
+    if (task) {
+      const { title, status } = req.body;
+
+      const index = task.taskList.findIndex((task) => task.title === title);
+
+      if (index !== -1) {
+        task.taskList[index].status = status;
+        await task.save();
+        res.status(200).json(task.taskList[index]);
+      } else {
+        res.status(401);
+        throw new Error("Task not found");
+      }
     } else {
       res.status(401);
       throw new Error("Task not found");
     }
-  } else {
-    res.status(401);
-    throw new Error("Task not found");
+  } catch (error) {
+    res.status(401).json({ message: error.message });
   }
 });
 
